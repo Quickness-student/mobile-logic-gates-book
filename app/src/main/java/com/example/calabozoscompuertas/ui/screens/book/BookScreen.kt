@@ -69,7 +69,6 @@ fun BookScreen(navController: NavHostController) = CalabozosCompuertasTheme {
 
 /**
  * Composable que organiza la navegación entre las pantallas dentro del libro.
- *
  * @param navControllerHome Controlador de navegación principal de la aplicación.
  */
 @Composable
