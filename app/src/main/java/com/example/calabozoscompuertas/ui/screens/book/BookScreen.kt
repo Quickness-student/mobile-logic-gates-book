@@ -315,6 +315,43 @@ private fun Controller(
                     }
                 )
             }
+            .pointerInput(Unit) {
+                awaitPointerEventScope {
+                    while (true) {
+                        val event = awaitPointerEvent()
+                        val pointers = event.changes
+
+                        when (pointers.size) {
+                            1 -> {
+                                val singleTouchInCenter = pointers.all { change ->
+                                    change.position.x in centerZoneStart..centerZoneEnd && change.pressed
+                                }
+                                touch.intValue = 1
+                                activeOr.value = true
+                                activeDouble.value = false
+                                activeXor.value = singleTouchInCenter
+                            }
+
+                            2 -> {
+                                val bothTouchesInCenter = pointers.all { change ->
+                                    change.position.x in centerZoneStart..centerZoneEnd && change.pressed
+                                }
+                                touch.intValue = 2
+                                activeOr.value = true
+                                activeDouble.value = bothTouchesInCenter
+                                activeXor.value = false
+                            }
+
+                            else -> {
+                                touch.intValue = 0
+                                activeOr.value = false
+                                activeDouble.value = false
+                                activeXor.value = false
+                            }
+                        }
+                    }
+                }
+            }
     )
 }
 
