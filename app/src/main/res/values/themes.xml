@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <style name="Theme.CalabozosCompuertas.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/background</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/fire_round</item>
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        <item name="postSplashScreenTheme">@style/Theme.CalabozosCompuertas</item>
+    </style>
     <style name="Theme.CalabozosCompuertas" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
